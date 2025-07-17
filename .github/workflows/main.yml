@@ -1,21 +1,31 @@
 name: Checkmarx One Scan
+
 on:
   push:
     branches:
       - main
       - master
       - dev
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Checkmarx One CLI Action
-        uses: checkmarx/ast-github-action@main #Github Action version
+
+      - name: Run Checkmarx One Scan
+        uses: Checkmarx/ast-github-action@2.0.23
         with:
-          project_name: githubAction_PM
+          # Provide the AST portal URL
+          base_uri: https://eu.ast.checkmarx.net/
+          # Provide the Tenant for AST portal URL
           cx_tenant: ast_abdul_ansari
-          base_uri: https://eu.ast.checkmarx.net
-          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
-          cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+          # Client ID for AST portal authentication
+          cx_client_id: ${{secrets.CX_CLIENT_ID}}
+          # Secret key for AST portal authentication
+          cx_client_secret: ${{secrets.CX_CLIENT_SECRET}}
+          # Branch name (if required)
+          #branch: # optional, default is ${{ github.head_ref || github.ref }}
+          # Additional parameters for AST scan
+          #additional_params: # optional
