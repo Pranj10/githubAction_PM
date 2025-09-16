@@ -1,5 +1,5 @@
 # Use AST Base image
-FROM checkmarx/ast-cli:2.3.25@sha256:832b464fedc2d5da30ff9952e96f601a7b9179b84b957d028f29050f4200e2cd
+FROM checkmarx/ast-cli:2.3.35@sha256:5162530c0810ffce10756b1b86006f5c28c7e8d6a381986f60e1ec51a5629c98
 
 # Docker actions must be run by the default Docker user (root).
 USER root
